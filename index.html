@@ -1,20 +1,12 @@
 
-<p>Click the button below to watch an ad and earn.</p>
 
-<button onclick="watchAd()">Watch Ad</button>
 
-<script>
-function watchAd() {
-  show_11434923()
-    .then(() => {
-      alert("Thanks for watching the ad!");
-    })
-    .catch(() => {
-      alert("Ad not available. Please try again later.");
-    });
-}
-</script>
+// Rewarded interstitial
 
-</body>
-</html>
-HTML
+show_11434923().then(() => {
+    // You need to add your user reward function here, which will be executed after the user watches the ad.
+    // For more details, please refer to the detailed instructions.
+    alert('You have seen an ad!');
+})
+
+        
