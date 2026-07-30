@@ -19,6 +19,24 @@
     <p>Click the button below to watch an ad. It helps keep this site free!</p>
     <button class="btn" onclick="showAd()">Watch Ad</button>
   </div>
-  <script> function showAd() { show_('11212555'); } </script>
+  <script> 
+    function showAd() {
+      // Try Rewarded format first
+      if (typeof show_11212555 === 'function') {
+        show_11212555().catch(function () {
+          alert("No ad is available right now. Please try again later.");
+        });
+      } 
+      // Fallback to generic show
+      else if (typeof show === 'function') {
+        show().catch(function () {
+          alert("No ad is available right now. Please try again later.");
+        });
+      }
+      else {
+        alert("Ad SDK not loaded yet. Please refresh.");
+      }
+    }
+  </script>
 </body>
 </html>
