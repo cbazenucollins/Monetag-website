@@ -1,14 +1,20 @@
-HTML
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Earn with Monetag</title>
-  <script src="//libtl.com/sdk.js" data-zone="11434923" data-sdk="show_11434923"></script>
-</head>
-<body style="font-family:Arial;text-align:center;padding:40px;">
-  <h1>Earn with Monetag</h1>
-  <p>Click the button below to watch an ad and earn.</p>
 
-  <button onclick="show_11434923()">Watch Ad</button>
+<p>Click the button below to watch an ad and earn.</p>
+
+<button onclick="watchAd()">Watch Ad</button>
+
+<script>
+function watchAd() {
+  show_11434923()
+    .then(() => {
+      alert("Thanks for watching the ad!");
+    })
+    .catch(() => {
+      alert("Ad not available. Please try again later.");
+    });
+}
+</script>
+
 </body>
+</html>
+HTML
