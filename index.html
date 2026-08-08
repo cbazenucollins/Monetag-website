@@ -5,17 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Support Me</title>
+  <title>Free Percentage Calculator</title>
 
   <!-- Monetag Rewarded Interstitial -->
   <script src="//libtl.com/sdk.js" data-zone="11527981" data-sdk="show_11527981"></script>
-
 
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 50px 20px;
+      padding: 30px 15px;
       background: #0f0f0f;
       color: #fff;
     }
@@ -28,24 +27,7 @@
       border-radius: 15px;
     }
 
-    .btn {
-      background: #00ff88;
-      color: #000;
-      border: none;
-      padding: 16px 30px;
-      font-size: 18px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      width: 100%;
-      margin-top: 15px;
-    }
-
-    .btn:hover {
-      background: #00dd70;
-    }
-
-    .btn:active {    .calculator {
+    .calculator {
       margin-bottom: 25px;
       padding-bottom: 25px;
       border-bottom: 1px solid #333;
@@ -78,6 +60,27 @@
       font-size: 18px;
       font-weight: bold;
     }
+
+    .btn {
+      background: #00ff88;
+      color: #000;
+      border: none;
+      padding: 16px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .btn:hover,
+    .calculator button:hover {
+      background: #00dd70;
+    }
+
+    .btn:active,
+    .calculator button:active {
       transform: scale(0.96);
     }
   </style>
@@ -86,7 +89,36 @@
 <body>
 
   <div class="box">
-    <h1>💰 Support Me</h1>
+
+    <!-- Percentage Calculator -->
+    <div class="calculator">
+      <h1>🧮 Percentage Calculator</h1>
+
+      <p>Calculate a percentage of any number.</p>
+
+      <input
+        id="percent"
+        type="number"
+        placeholder="Enter percentage"
+      >
+
+      <input
+        id="number"
+        type="number"
+        placeholder="Enter number"
+      >
+
+      <br>
+
+      <button onclick="calculatePercentage()">
+        Calculate
+      </button>
+
+      <div id="result"></div>
+    </div>
+
+    <!-- Support Section -->
+    <h2>💰 Support Me</h2>
 
     <p>
       Click the button below to watch an ad.
@@ -94,27 +126,63 @@
     </p>
 
     <button class="btn" onclick="showAd()">
-      Watch Ad
+      🎬 Watch Ad
     </button>
+
   </div>
 
-  <!-- Monetag Rewarded Ad -->
+  <!-- JavaScript -->
   <script>
+
+    function calculatePercentage() {
+      const percent =
+        parseFloat(document.getElementById("percent").value);
+
+      const number =
+        parseFloat(document.getElementById("number").value);
+
+      if (isNaN(percent) || isNaN(number)) {
+        document.getElementById("result").innerText =
+          "Please enter both numbers.";
+        return;
+      }
+
+      const answer = (percent / 100) * number;
+
+      document.getElementById("result").innerText =
+        percent + "% of " + number + " = " + answer;
+    }
+
+
     function showAd() {
+
       if (typeof show_11527981 === "function") {
 
         show_11527981()
           .then(function () {
-            alert("You have seen the ad! Thank you for your support.");
+
+            alert(
+              "You have seen the ad! Thank you for your support."
+            );
+
           })
           .catch(function () {
-            alert("No ad is available right now. Please try again later.");
+
+            alert(
+              "No ad is available right now. Please try again later."
+            );
+
           });
 
       } else {
-        alert("Ad SDK not loaded yet. Please refresh the page.");
+
+        alert(
+          "Ad SDK not loaded yet. Please refresh the page."
+        );
+
       }
     }
+
   </script>
 
   <!-- Adsterra Social Bar -->
